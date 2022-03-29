@@ -76,6 +76,7 @@ input[type=button] {
 }
 .text{
     margin: 2px;
+    
 }
 .newDiv{
     margin:1px;
@@ -106,4 +107,10 @@ color: rgb(81, 245, 81);
 }
 .fa-angles-left{
     color:rgb(245, 137, 245)
+}
+.choice{
+    
+    height: 90%;
+    background-color: #fafafa;
+    /* background-color: yellow; */
 }
