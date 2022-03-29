@@ -87,13 +87,15 @@ function createDiv(id,type){
 
 }
 //edit task
+
 function editTask(id){
     // alert(id)
     document.getElementById("title"+id).removeAttribute('readonly');
     document.getElementById("date"+id).removeAttribute('readonly');
     document.getElementById("desc"+id).removeAttribute('readonly');
-    
-
+    document.getElementById("title"+id).style.background="#FFFFE0";
+    document.getElementById("date"+id).style.background="#FFFFE0";
+    document.getElementById("desc"+id).style.background="#FFFFE0";
 }
 //remove task div
 
