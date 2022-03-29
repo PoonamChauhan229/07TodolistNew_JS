@@ -6,21 +6,23 @@ var choice=document.getElementsByClassName('choice')
 var dragItem=null;
 function addTask(){
     title=document.getElementById('taskTitle');
-    
     date=document.getElementById('taskDate');
     desc=document.getElementById('taskDesc');
     count++;
     if(title.value!="" && date.value!=""&& desc.value!=""){
         createDiv(count,"pending");
+        addSuccess();
         title.value="";
         date.value="";
         desc.value="";
-
+        
+    }
+    else{
+        enterDetails();
     }
     
 
 }
-
 function createDiv(id,type){
     // alert(type)
     var newDiv=document.createElement('div')
@@ -31,13 +33,15 @@ function createDiv(id,type){
     newDiv.innerHTML+="<span>Date:</span><input type='text' id='date"+id+"' class='text'value='"+date.value+"'readOnly><br>";
     newDiv.innerHTML+="<span>Desc:</span><input type='text' id='desc"+id+"' class='text'value='"+desc.value+"'readOnly><br>";
     // newDiv.innerHTML+=`<input type='button' onclick="removeDiv('${id}')" value='x'>`
-    newDiv.innerHTML+=`<i class="fa-solid fa-trash-can" onclick="removeDiv('${id}')"></i>`
-    newDiv.innerHTML+=`<i class="fa-solid fa-pen-to-square" onclick="editTask('${id}')"></i>`
+    newDiv.innerHTML+=`<i id="deleteToast" class="fa-solid fa-trash-can" onclick="removeDiv('${id}')"></i>`
+    newDiv.innerHTML+=`<i id="editToast"class="fa-solid fa-pen-to-square" onclick="editTask('${id}')"></i>`
     // newDiv.innerHTML+=`<input type='button' onclick="editTask('${id}')" value='Edit'>`
     //newDiv.innerHTML+=`<input type='button' onclick="moveTask('${id}','${type}')" value='Move'>`
-    newDiv.innerHTML+=`<i class="fa-solid fa-angles-left" onclick="moveLeft('${id}','${type}')"></i>`
-    newDiv.innerHTML+=`<i class="fa-solid fa-angles-right" onclick="moveRight('${id}','${type}')"></i>`
+    newDiv.innerHTML+=`<i id="moveLeftToast"class="fa-solid fa-angles-left" onclick="moveLeft('${id}','${type}')"></i>`
+    newDiv.innerHTML+=`<i id="moveRightToast"class="fa-solid fa-angles-right" onclick="moveRight('${id}','${type}')"></i>`
   
+    
+
     if(type=="pending")
     pendingTask.appendChild(newDiv)
     else if(type=="active")
@@ -70,6 +74,7 @@ function createDiv(id,type){
     }
     function dragDrop(e){
         this.append(dragItem);
+        moveRightToast();
     }
     function dragOver(e){
         e.preventDefault();
@@ -82,13 +87,9 @@ function createDiv(id,type){
          this.style.border="none"
     }
 
-
-
-
 }
 //edit task
-
-function editTask(id){
+function editTask(id){    
     // alert(id)
     document.getElementById("title"+id).removeAttribute('readonly');
     document.getElementById("date"+id).removeAttribute('readonly');
@@ -96,12 +97,18 @@ function editTask(id){
     document.getElementById("title"+id).style.background="#FFFFE0";
     document.getElementById("date"+id).style.background="#FFFFE0";
     document.getElementById("desc"+id).style.background="#FFFFE0";
+    editToast();
 }
+
+
 //remove task div
 
 function removeDiv(divId){
-    document.getElementById("taskDiv"+divId).remove();
-
+    let deleteRequest="Are you sure to delete this task?";
+    if(confirm(deleteRequest)==true){
+        document.getElementById("taskDiv"+divId).remove();
+    }       
+    deleteToast();
 }
 function getValues(id){
     title=document.getElementById('title'+id);
@@ -120,6 +127,8 @@ function moveRight(id,type){
         createDiv("complete"+id,"complete")
     }
     document.getElementById("taskDiv"+id).remove();
+    moveRightToast()
+  
 }
 
 function moveLeft(id,type){
@@ -133,6 +142,111 @@ function moveLeft(id,type){
         createDiv("pending"+id,"pending")
     }
     document.getElementById("taskDiv"+id).remove();
+   
+    moveLeftToast();
     
 }
 
+
+//Toastify for edit
+  function editToast(){
+    Toastify({
+        text: "Updated Successfully",
+        duration: 1000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #8360c3, #2ebf91)",
+        },        
+      }).showToast();    
+  
+  }
+
+  
+//Toastify for MoveLeft
+ function moveLeftToast() {
+  Toastify({
+      text: "Status Updated Successfully",
+      duration: 1000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #00416a, #799f0c, #ffe000)",
+      },        
+    }).showToast(); 
+}
+
+//Toastify for MoveRight
+
+function moveRightToast() {
+  Toastify({
+      text: "Status Updated Successfully",
+      duration: 1000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },        
+    }).showToast();    
+
+}
+
+//Toastify for delete
+function deleteToast() {
+Toastify({
+    text: "Deleted Successfully",
+    duration: 1000,
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+        background: "linear-gradient(to right, #ff512f, #dd2476)",
+    },        
+  }).showToast();    
+
+}
+
+//Toastify Notification to Update Details
+function enterDetails() {
+    Toastify({
+        text: "Please Enter All The Details",
+        duration: 1000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #b92b27, #1565c0)",
+        },        
+      }).showToast();    
+    
+    }
+
+//Toastify Notification after Successfull Adding Task
+function addSuccess() {
+    Toastify({
+        text: "New Task Added !!!",
+        duration: 1000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #a80077, #66ff00)",
+        },        
+      }).showToast();    
+    
+    }
