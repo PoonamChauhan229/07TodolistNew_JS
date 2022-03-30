@@ -97,10 +97,10 @@ function editTask(id){
     document.getElementById("title"+id).removeAttribute('readonly');
     document.getElementById("date"+id).removeAttribute('readonly');
     document.getElementById("desc"+id).removeAttribute('readonly');
-    document.getElementById("title"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
+    document.getElementById("title"+id).style.background="lightgrey";
 
-    document.getElementById("date"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
-    document.getElementById("desc"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
+    document.getElementById("date"+id).style.background="lightgrey";
+    document.getElementById("desc"+id).style.background="lightgrey";
     
     editToast();
 }
@@ -198,7 +198,7 @@ function moveLeft(id,type){
       position: "right", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
       style: {
-        background: "linear-gradient(to right, #00416a, #799f0c, #ffe000)",
+        background: "lightgreen",
       },        
     }).showToast(); 
 }
@@ -215,7 +215,7 @@ function moveRightToast() {
       position: "right", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
       style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
+        background: "lightgreen",
       },        
     }).showToast();    
 
@@ -232,7 +232,7 @@ Toastify({
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
     style: {
-        background: "linear-gradient(to right, #ff512f, #dd2476)",
+        background: "red",
     },        
   }).showToast();    
 
@@ -249,7 +249,7 @@ function enterDetails() {
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: "linear-gradient(to right, #b92b27, #1565c0)",
+            background: "red",
         },        
       }).showToast();    
     
@@ -266,7 +266,7 @@ function addSuccess() {
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: "linear-gradient(to right, #a80077, #66ff00)",
+            background: "green",
         },        
       }).showToast();    
     
@@ -283,24 +283,9 @@ function saveToast() {
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: "linear-gradient(to right, #ee9ca7, #ffdde1)"
+            background: "green"
         },        
       }).showToast();    
     
     }
 
-function dragDropToast() {
-    Toastify({
-        text: "Dragged Successfully!!!",
-        duration: 1000,
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-            background: "linear-gradient(to right, #cac531, #f3f9a7)"
-        },        
-        }).showToast();    
-    
-    }
