@@ -207,7 +207,7 @@ function moveLeft(id,type){
 
 function moveRightToast() {
   Toastify({
-      text: "Sent to Next Level Successfully",
+      text: "Sent to Next Level!!!",
       duration: 1000,
       newWindow: true,
       close: true,
