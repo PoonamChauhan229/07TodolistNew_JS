@@ -35,6 +35,8 @@ function createDiv(id,type){
     // newDiv.innerHTML+=`<input type='button' onclick="removeDiv('${id}')" value='x'>`
     newDiv.innerHTML+=`<i id="deleteToast" class="fa-solid fa-trash-can" onclick="removeDiv('${id}')"></i>`
     newDiv.innerHTML+=`<i id="editToast"class="fa-solid fa-pen-to-square" onclick="editTask('${id}')"></i>`
+    newDiv.innerHTML+=`<i id="editToast"class="fa-solid fa-floppy-disk" onclick="saveTask('${id}')"></i>`
+
     // newDiv.innerHTML+=`<input type='button' onclick="editTask('${id}')" value='Edit'>`
     //newDiv.innerHTML+=`<input type='button' onclick="moveTask('${id}','${type}')" value='Move'>`
     newDiv.innerHTML+=`<i id="moveLeftToast"class="fa-solid fa-angles-left" onclick="moveLeft('${id}','${type}')"></i>`
@@ -49,6 +51,7 @@ function createDiv(id,type){
     else 
     completeTask.appendChild(newDiv)
 
+    //drag
     var dragDiv=document.getElementsByClassName('newDiv')
     console.log(dragDiv);
 
@@ -94,10 +97,28 @@ function editTask(id){
     document.getElementById("title"+id).removeAttribute('readonly');
     document.getElementById("date"+id).removeAttribute('readonly');
     document.getElementById("desc"+id).removeAttribute('readonly');
-    document.getElementById("title"+id).style.background="#FFFFE0";
-    document.getElementById("date"+id).style.background="#FFFFE0";
-    document.getElementById("desc"+id).style.background="#FFFFE0";
+    document.getElementById("title"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
+
+    document.getElementById("date"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
+    document.getElementById("desc"+id).style.background="linear-gradient(to right, #f7f8f8, #acbb78)";
+    
     editToast();
+}
+//save Task
+function saveTask(id){
+    console.log("cannot edit")
+    document.getElementById("title"+id).setAttribute('readonly',true)
+    document.getElementById("title"+id).style.background="white";
+    
+    document.getElementById("date"+id).setAttribute('readonly',true)
+    document.getElementById("date"+id).style.background="white";
+
+    
+    document.getElementById("desc"+id).setAttribute('readonly',true)
+    document.getElementById("desc"+id).style.background="white";
+
+    saveToast();
+    
 }
 
 
@@ -151,7 +172,7 @@ function moveLeft(id,type){
 //Toastify for edit
   function editToast(){
     Toastify({
-        text: "Updated Successfully",
+        text: "Happy Editing!!!",
         duration: 1000,
         newWindow: true,
         close: true,
@@ -169,7 +190,7 @@ function moveLeft(id,type){
 //Toastify for MoveLeft
  function moveLeftToast() {
   Toastify({
-      text: "Status Updated Successfully",
+      text: "Sent Behind Successfully",
       duration: 1000,
       newWindow: true,
       close: true,
@@ -186,7 +207,7 @@ function moveLeft(id,type){
 
 function moveRightToast() {
   Toastify({
-      text: "Status Updated Successfully",
+      text: "Sent to Next Level Successfully",
       duration: 1000,
       newWindow: true,
       close: true,
@@ -246,6 +267,23 @@ function addSuccess() {
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
             background: "linear-gradient(to right, #a80077, #66ff00)",
+        },        
+      }).showToast();    
+    
+    }
+
+//Toastify Notification after Successfull Adding Task
+function saveToast() {
+    Toastify({
+        text: "Saved Successfully!!!",
+        duration: 1000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #ee9ca7, #ffdde1)"
         },        
       }).showToast();    
     
