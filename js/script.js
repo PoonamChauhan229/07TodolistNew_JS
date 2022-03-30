@@ -77,7 +77,7 @@ function createDiv(id,type){
     }
     function dragDrop(e){
         this.append(dragItem);
-        moveRightToast();
+        dragDropToast();
     }
     function dragOver(e){
         e.preventDefault();
@@ -286,5 +286,21 @@ function saveToast() {
             background: "linear-gradient(to right, #ee9ca7, #ffdde1)"
         },        
       }).showToast();    
+    
+    }
+
+function dragDropToast() {
+    Toastify({
+        text: "Dragged Successfully!!!",
+        duration: 1000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #cac531, #f3f9a7)"
+        },        
+        }).showToast();    
     
     }
