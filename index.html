@@ -10,9 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <title>To Do App</title>
     <style>
-        body{
-            background-image: url('./images/pattern.png');
-        }
+        
     </style>
 </head>
 <body>
@@ -30,17 +28,17 @@
     <div id="newTask">
         <div class="child">
             <span>Title:</span>
-            <input type="text" id="taskTitle">
+            <input type="text" id="taskTitle" required>
         </div>
 
         <div class="child">
             <span>Description:</span>
-            <input  type="text" id="taskDesc"></input>
+            <input  type="text" id="taskDesc"required></input>
         </div>
         
         <div class="child">
             <span>Date:</span>
-            <input type="date" id="taskDate">
+            <input type="date" id="taskDate"required>
             
         </div>
         <input type="button" value="Add Task" onclick="addTask()">

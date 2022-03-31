@@ -16,7 +16,7 @@ font-weight: bold;
 margin-bottom: 2px;
 }
 #newTask{
-/* background-color: rgb(243, 237, 237); */
+background-color: rgb(243, 237, 237);
 /* background: linear-gradient(to right, #c9d6ff, #e2e2e2); */
 display: flex;
 padding:5px;
