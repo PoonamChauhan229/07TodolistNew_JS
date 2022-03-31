@@ -102,7 +102,7 @@ function editTask(id){
     document.getElementById("date"+id).style.background="lightgrey";
     document.getElementById("desc"+id).style.background="lightgrey";
     
-    editToast();
+    //editToast();
 }
 //save Task
 function saveTask(id){
@@ -148,7 +148,7 @@ function moveRight(id,type){
         createDiv("complete"+id,"complete")
     }
     document.getElementById("taskDiv"+id).remove();
-    moveRightToast()
+    //moveRightToast()
   
 }
 
@@ -164,7 +164,7 @@ function moveLeft(id,type){
     }
     document.getElementById("taskDiv"+id).remove();
    
-    moveLeftToast();
+   // moveLeftToast();
     
 }
 
